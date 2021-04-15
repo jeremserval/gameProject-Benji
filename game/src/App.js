@@ -7,6 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import GameDetail from './components/GameDetail';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/GameDetail/:id">
+          <GameDetail />
         </Route>
       </Switch>
     </Router>
