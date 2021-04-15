@@ -27,7 +27,6 @@ const Home = () => {
     return filtered
   })
 
-  console.log(filterGame)
 
   return (
     <div className="Home">
