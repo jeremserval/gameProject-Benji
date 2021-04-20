@@ -13,12 +13,13 @@ import GameDetail from '../GameDetail';
 const GameList = ({games}) => {
 
   let history = useHistory();
+  
 
   function handleClick(game) {
     history.push({
       pathname: '/GameDetail',
       search : `?id=${game.id}`,
-      state: { game: 'game'}
+      state: { game: game}
     });
   }
 
@@ -34,7 +35,7 @@ const GameList = ({games}) => {
           <p>Date de sortie: {game.released}</p>
           <h3>Plateformes : </h3>
           <p>{game.platforms.map(p => `${p.platform.name} | `)}</p>
-          <button type="button" onClick={handleClick(game)}>
+          <button type="button" onClick={() => {handleClick(game)}}>
             en savoir plus
           </button>
         </div>

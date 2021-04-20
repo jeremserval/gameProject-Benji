@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/GameDetail/:id">
+        <Route path="/GameDetail">
           <GameDetail />
         </Route>
       </Switch>
