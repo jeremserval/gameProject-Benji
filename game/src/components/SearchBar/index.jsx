@@ -8,7 +8,7 @@ const SearchBar = ({completion}) => {
           <span className="visually-hidden">Search game</span>
         </label>
         <input
-            onInput={e => completion(e.target.value)}    
+            onChange={e => completion(e.target.value)}    
             type="text"
             id="header-search"
             placeholder="Search"

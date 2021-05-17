@@ -2,12 +2,8 @@ import React from 'react';
 import './index.scss';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
   useHistory
 } from "react-router-dom";
-import GameDetail from '../GameDetail';
 
 
 const GameList = ({games}) => {
@@ -33,8 +29,6 @@ const GameList = ({games}) => {
         <div className="card-body">
           <h3  className="title-game">{game.name}</h3>
           <p>Date de sortie: {game.released}</p>
-          <h3>Plateformes : </h3>
-          <p>{game.platforms.map(p => `${p.platform.name} | `)}</p>
           <button type="button" onClick={() => {handleClick(game)}}>
             en savoir plus
           </button>
