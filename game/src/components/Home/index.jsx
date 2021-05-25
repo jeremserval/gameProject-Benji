@@ -14,6 +14,7 @@ const Home = () => {
   const [filterGame, setFilterGame] = useState("");
   const [allPlatforms, setAllPlatforms] = useState([]);
 
+  
   const fetchGame = () => {
     fetch('https://api.rawg.io/api/games?key=21dd3ea253de44a6bc6c827eedc10926&page_size=15')
     .then(resp => resp.json())
@@ -29,6 +30,9 @@ const Home = () => {
     return filtered
   })
 
+  useEffect(() => {
+    fetchPlatforms()
+  }, []);
 
   const fetchPlatforms = () => {
     fetch('https://api.rawg.io/api/platforms?key=21dd3ea253de44a6bc6c827eedc10926')
@@ -36,15 +40,10 @@ const Home = () => {
     .then(({results}) => setAllPlatforms(results))
   }
 
-  useEffect(() => {
-    fetchPlatforms()
-  }, []);
-
-
   return (
     <div className="Home">
       <SearchBar completion={handleSearchGame}/>
-      <FilterPlatforms platforms={allPlatforms}/>
+      <FilterPlatforms platforms={allPlatforms} setGames={setGames}/>
 
       <GameList games={filterSearch} />
     </div>

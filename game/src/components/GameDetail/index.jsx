@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {useLocation} from "react-router-dom"
 import { Jumbotron } from 'react-bootstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import './index.scss';
-
-
 
 const GameDetail = () => {
 
@@ -51,7 +49,7 @@ const GameDetail = () => {
         </div>
       </div>
       <div className="screenshot">
-        <p>{game.short_screenshots.map(p =><img src={p.image} alt='screenshot'></img>)}</p>
+        <p>{game.short_screenshots.map(p =><img  key={p.name} src={p.image} alt='screenshot'></img>)}</p>
       </div>
     </div>
   );
