@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SearchBar = ({completion}) => {
+  
   return (
     <div className="SearchBar">
       <form action="/" method="get">

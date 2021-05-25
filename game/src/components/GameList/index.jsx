@@ -2,9 +2,6 @@ import React from 'react';
 import './index.scss';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
   useHistory
 } from "react-router-dom";
 import GameDetail from '../GameDetail';
@@ -22,7 +19,6 @@ const GameList = ({games}) => {
       state: { game: game}
     });
   }
-
 
   return (
     <div className="GameList">

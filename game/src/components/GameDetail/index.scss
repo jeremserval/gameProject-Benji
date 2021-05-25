@@ -41,12 +41,13 @@
   border-right: 2px groove;
   margin-right: 50px;
   padding-right: 50px;
-  width: 150px;
+  max-width: 150px;
+  max-height: 100px;
 }
 
 img {
-  width: 40%;
-  height: 50%;
+  width: 550px;
+  height: 350px;
 }
 
 .screenshot{
