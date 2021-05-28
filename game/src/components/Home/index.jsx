@@ -1,51 +1,26 @@
-import React from 'react';
-import { useState, useEffect, useMemo } from 'react';
-import SearchBar from '../SearchBar';
-import GameList from '../GameList';
-import FilterPlatforms from '../FilterPlatforms';
+import React, { useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
+import SearchBar from "../SearchBar";
+import GameList from "../GameList";
+import FilterPlatforms from "../FilterPlatforms";
 
 const Home = () => {
+  const [gameFilter, setGameFilter] = useState("");
+  const [platformId, setPlatformId] = useState(null);
 
-  useEffect(() => {
-    fetchGame()
-  }, []);
+  const handleSearchGame = useCallback((e) => {
+    setGameFilter(e);
+  });
 
-  const [games, setGames] = useState([]);
-  const [filterGame, setFilterGame] = useState("");
-  const [allPlatforms, setAllPlatforms] = useState([]);
-
-  
-  const fetchGame = () => {
-    fetch('https://api.rawg.io/api/games?key=21dd3ea253de44a6bc6c827eedc10926&page_size=15')
-    .then(resp => resp.json())
-    .then(({results}) => setGames(results))
-  }
-
-  const handleSearchGame = (e) => {
-    setFilterGame(e);
-  }
-
-  const filterSearch = useMemo(() => {
-    let filtered = games.filter(game => game.name.toLowerCase().indexOf(filterGame.toLowerCase()) !== -1)
-    return filtered
-  })
-
-  useEffect(() => {
-    fetchPlatforms()
-  }, []);
-
-  const fetchPlatforms = () => {
-    fetch('https://api.rawg.io/api/platforms?key=21dd3ea253de44a6bc6c827eedc10926')
-    .then(resp => resp.json())
-    .then(({results}) => setAllPlatforms(results))
-  }
+  const handlePlatformSelect = useCallback((platformId) => {
+    setPlatformId(platformId);
+  });
 
   return (
     <div className="Home">
-      <SearchBar completion={handleSearchGame}/>
-      <FilterPlatforms platforms={allPlatforms} setGames={setGames}/>
-
-      <GameList games={filterSearch} />
+      <SearchBar completion={handleSearchGame} />
+      <FilterPlatforms onSelect={handlePlatformSelect} />
+      <GameList platformId={platformId} filter={gameFilter} />
     </div>
   );
 };
